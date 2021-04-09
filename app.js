@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require ('mongoose');
+const cookieParser = require('cookie-parser');
 const expressValidator = require('express-validator');
 
 // Import Routes
@@ -20,6 +21,7 @@ mongoose.connect(process.env.DATABASE, {
 
 // Middleware
 app.use(express.json())
+app.use(cookieParser())
 app.use(expressValidator())
 
 // Routes Middleware

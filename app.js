@@ -17,6 +17,9 @@ mongoose.connect(process.env.DATABASE, {
 .then(() => console.log('db connected'))
 .catch(() => console.log('not connect to the databse'))
 
+// Middleware
+app.use(express.json())
+
 // Routes Middleware
 
 app.use('/api/users', userRoutes);

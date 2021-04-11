@@ -27,8 +27,17 @@ const userSchema = new mongoose.Schema({
         required: true,
     },
     salt: {
-        type: String
-    }
+        type: String,
+    },
+    adresse:{
+        type: String,
+        trim:true,
+
+    },
+    role:{
+        type: Number,
+        default: 0
+    },
 }, {timestamps: true})
 
 

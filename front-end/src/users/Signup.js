@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Layout from './../core/Layout'
-// import {API_URL} from './../config'
+
+import {API_URL} from './../config'
 
 const Signup = () => {
 
@@ -15,8 +16,24 @@ const Signup = () => {
         setUser({...user, [e.target.id]: e.target.value})
     }
 
+    const submitSignup = e =>{
+        e.preventDefault();
+
+        fetch(`${API_URL}/signup`, {
+            method: "POST",
+            headers: {
+                "Accept" : "application/json" ,
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(user => console.log(user))
+        .catch(err => console.error(err))
+    }
+
     const Form = () => (
-        <form >
+        <form onSubmit = {submitSignup}>
             <div className="form-group">
                 <label htmlFor="first_name" className="text-muted">First name</label>
                 <input onChange={handleChange} type="text" className="form-control" id="first_name"/>
@@ -31,7 +48,7 @@ const Signup = () => {
             </div>
             <div className="form-group">
                 <label htmlFor="password" className="text-muted">Password</label>
-                <input onChange={handleChange} type="text" className="form-control" id="password"/>
+                <input onChange={handleChange} type="password" className="form-control" id="password"/>
             </div>
             <button className="btn btn-lg btn-block btn-outline-success">Sign Up</button>
             {JSON.stringify(user)}

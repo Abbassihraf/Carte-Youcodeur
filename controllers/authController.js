@@ -12,7 +12,8 @@ exports.signup = (req, res) => {
         if(err){
             return res.status(400).send(err)
         }
-
+        user.hashed_password = undefined
+        user.salt = undefined
         res.send(user)
     })
 }

@@ -1,9 +1,15 @@
 import React from 'react'
+import Layout from './../core/Layout'
+
 
 const Signup = () => {
     return (
         <div>
-            <h1>SignIn</h1>
+            <Layout title="Sign Up" description = "Sign Up Node React Youcodeur Carte App" className="container">
+                <h2>
+                    SignUp
+                </h2>
+            </Layout>
         </div>
     )
 }

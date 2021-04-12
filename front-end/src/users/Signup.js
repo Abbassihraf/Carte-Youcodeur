@@ -40,8 +40,7 @@ const Signup = (props) => {
             }
         })
 
-
-        .catch(err => console.error(err))
+        .catch(err => toastr.error(err, 'Server error'))
     }
 
     const Form = () => (

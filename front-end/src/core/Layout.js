@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Layout = ({title, description, className, Children}) => {
+const Layout = ({title, description, className, children}) => {
     return (
         <div>
             <div className="jumbotron">
@@ -8,7 +8,7 @@ const Layout = ({title, description, className, Children}) => {
                 <p className="lead">{description}</p>
             </div>
             <div className={className}>
-                {Children}
+                {children}
             </div>
         </div>
     )

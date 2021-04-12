@@ -16,7 +16,7 @@ exports.userSignUpValidator = (req, res, next) =>{
 
         if(errors)
         {
-            return res.status(400).json(errors)
+            return res.status(400).json({error:errors[0].msg})
         }
 
         next()

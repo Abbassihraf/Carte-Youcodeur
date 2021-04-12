@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import Layout from './../core/Layout'
+import toastr from 'toastr'
+import "toastr/build/toastr.css";
 
 import {API_URL} from './../config'
 
-const Signup = () => {
+const Signup = (props) => {
 
     const [user, setUser] = useState({
         first_name : '',
@@ -28,7 +30,17 @@ const Signup = () => {
             body: JSON.stringify(user)
         })
         .then(res => res.json())
-        .then(user => console.log(user))
+        .then(res => {
+            if(res.error){
+                toastr.warning(res.error, 'Please Check Your Form!')
+            }
+            else{
+                toastr.success('User is creacted Successfully', 'New Account')
+                props.history.push('/signin')
+            }
+        })
+
+
         .catch(err => console.error(err))
     }
 
